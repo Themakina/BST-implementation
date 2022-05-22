@@ -128,10 +128,65 @@ void BST::searchNodeHelper(Node* & root,int data) {
 }
 
 
-void BST:: deleteNode() {
-
+void BST:: deleteNode(int data) {
+	if (mRoot == nullptr)
+	{
+		std::cout << "The tree is empty";
+	}
+	else
+	{
+		deleteNodeHelper(mRoot,data);
+	}
 }
 
+BST::Node* BST::deleteNodeHelper(Node* root, int data) {
+	if (root == nullptr) {
+		return root;
+	}
+	else if (root->mData > data)
+	{
+		root->left = deleteNodeHelper(root->left,data);
+	}
+	else if(root->mData < data)
+	{
+		root->right = deleteNodeHelper(root->right, data);
+	}
+	else
+	{
+		if (root->left == nullptr && root->right == nullptr)
+		{
+			delete root;
+			root = nullptr;
+		}
+		else if( root->right == nullptr  )  // one child...
+		{
+			Node* temp = root;
+			root = root->left;
+			delete temp;
+		}
+		else if (root->left == nullptr)
+		{
+			Node* temp = root;
+			root = root->right;
+			delete temp;
+		}
+		else
+		{
+			Node* temp = FindMax(root->left);
+			root->mData = temp->mData;
+			root->left = deleteNodeHelper(root->left, data);
+		}
+	}
+	return root;
+}
+
+BST::Node* BST :: FindMax(Node* root) {
+	while (root->right)
+	{
+		root = root->right;
+	}
+	return root;
+}
 
 
 

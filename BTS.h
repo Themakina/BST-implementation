@@ -41,5 +41,7 @@ public:
 	void printPreOrder(Node* root);
 	void searchNode(int data);
 	void searchNodeHelper(Node*& root, int data);
-	void deleteNode();
+	void deleteNode(int data);
+	Node* deleteNodeHelper(Node* root, int data);
+	Node* FindMax(Node* root);
 };
