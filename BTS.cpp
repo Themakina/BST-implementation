@@ -97,6 +97,40 @@ void BST::printPreOrder(Node* root) {
 	printPreOrder(root->right);
 	
 }
+void BST::searchNode(int data) {
+	if (mRoot == nullptr)
+	{
+		std::cout << "Tree is empty";
+	}
+	else
+	{
+		searchNodeHelper(mRoot,data);
+	}
+}
+void BST::searchNodeHelper(Node* & root,int data) {
+    if (root == nullptr) {
+		std::cout << "The node is not found";
+	}
+	else if (root->mData < data)
+	{
+		searchNodeHelper(root->right, data);
+	}
+	else if(root->mData == data )
+	{
+		std::cout << "The node is found";
+		return;
+	}
+	
+	else
+	{
+		searchNodeHelper(root->left, data);
+	}
+}
+
+
+void BST:: deleteNode() {
+
+}
 
 
 

@@ -11,5 +11,7 @@ int main() {
 	binarysearch.print(inorder);
 	std::cout << std::endl;
 	binarysearch.print(postorder);
+	std::cout << std::endl;
+	binarysearch.searchNode(5);
 
 }

@@ -39,4 +39,7 @@ public:
 	void print(printtype a);
 	void printPostOrder(Node* root);
 	void printPreOrder(Node* root);
+	void searchNode(int data);
+	void searchNodeHelper(Node*& root, int data);
+	void deleteNode();
 };
